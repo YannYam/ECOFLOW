@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ECOFLOW — Quiz interaktif tentang pengendalian banjir dan pencemaran limbah untuk siswa SMP">
+  <title>ECOFLOW — Quiz Lingkungan</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="bg-animated"></div>
+  <div class="wave-container"><div class="wave"></div><div class="wave"></div></div>
+
+  <div class="app-container">
+
+    <!-- SCREEN: Nickname Setup (First Visit) -->
+    <div class="screen" id="screen-nickname">
+      <div class="logo">
+        <div class="logo-icon">🌊</div>
+        <div class="logo-title">ECOFLOW</div>
+        <div class="logo-subtitle">Quiz Lingkungan Hidup</div>
+      </div>
+      <div class="card card-glass">
+        <h2 class="text-center mb-16" style="font-size:1.4rem;">Siapa namamu? 👋</h2>
+        <p class="text-center mb-24" style="color:var(--text-secondary);font-size:0.9rem;">Buat nickname untuk bermain quiz</p>
+        <div class="input-group">
+          <label for="nickname-input">Nickname</label>
+          <input type="text" id="nickname-input" class="input-field" placeholder="Masukkan nickname kamu..." maxlength="16" autocomplete="off">
+        </div>
+        <button class="btn btn-secondary btn-full btn-lg mt-16" id="btn-save-nickname">
+          Ayo Mulai! 🚀
+        </button>
+      </div>
+    </div>
+
+    <!-- SCREEN: Join Game -->
+    <div class="screen" id="screen-join">
+      <div class="logo">
+        <div class="logo-icon">🌊</div>
+        <div class="logo-title">ECOFLOW</div>
+        <div class="logo-subtitle">Quiz Lingkungan Hidup</div>
+      </div>
+      <div class="nickname-bar" id="join-nickname-bar">
+        <span class="avatar" id="join-avatar">🦊</span>
+        <span class="name" id="join-nickname-display">Player</span>
+        <button class="edit-btn" id="btn-edit-nickname" title="Edit nickname">✏️</button>
+      </div>
+      <div class="card card-glass">
+        <h2 class="text-center mb-24" style="font-size:1.3rem;">Masukkan Kode Game</h2>
+        <div class="input-group">
+          <label for="pin-input">Game PIN</label>
+          <input type="text" id="pin-input" class="input-field input-large" placeholder="000000" maxlength="6" inputmode="numeric" autocomplete="off">
+        </div>
+        <button class="btn btn-primary btn-full btn-lg mt-16" id="btn-join">
+          Gabung! 🎮
+        </button>
+        <p class="text-center mt-16" id="join-error" style="color:var(--danger);font-size:0.9rem;display:none;"></p>
+      </div>
+    </div>
+
+    <!-- SCREEN: Player Lobby -->
+    <div class="screen" id="screen-lobby">
+      <div class="logo">
+        <div class="logo-icon">⏳</div>
+        <div class="logo-title" style="font-size:2rem;">Kamu sudah masuk!</div>
+      </div>
+      <div class="card card-glass text-center">
+        <div class="spinner"></div>
+        <p style="font-size:1.2rem;font-weight:600;">Menunggu host memulai game...</p>
+        <p class="mt-16" style="color:var(--text-secondary);">Bersiap-siaplah! 💪</p>
+      </div>
+    </div>
+
+    <!-- SCREEN: Player Media Wait -->
+    <div class="screen" id="screen-media-wait">
+      <div class="card card-glass text-center">
+        <h3 style="font-size:1.5rem; margin-bottom:16px;">🎬 Memutar Video</h3>
+        <p style="color:var(--text-secondary);">Perhatikan layar host untuk menonton video sebelum pertanyaan dimulai!</p>
+        <div class="spinner mt-24"></div>
+      </div>
+    </div>
+
+    <!-- SCREEN: Answer Question -->
+    <div class="screen" id="screen-question">
+      <div class="question-header">
+        <span class="question-category" id="q-category">Kategori</span>
+        <span id="q-progress">1 / 15</span>
+      </div>
+      <div class="timer-ring" id="player-timer"></div>
+      <div class="card card-glass mb-24 text-center" style="padding: 16px;">
+        <h3 style="color:var(--primary);margin-bottom:8px;">Perhatikan layar host! 👀</h3>
+        <p style="color:var(--text-secondary);font-size:0.9rem;">Pilih jawaban yang benar di bawah ini</p>
+      </div>
+      <div class="answers-grid" id="answers-container"></div>
+    </div>
+
+    <!-- SCREEN: Answer Result -->
+    <div class="screen" id="screen-result">
+      <div class="text-center">
+        <div class="result-icon" id="result-icon">✅</div>
+        <div class="result-text" id="result-text">Benar!</div>
+        <div class="result-points" id="result-points">+1500</div>
+        <div class="result-streak" id="result-streak" style="display:none;">🔥 <span></span> jawaban berturut-turut!</div>
+        <div class="result-total mt-16" id="result-total">Total Skor: 0</div>
+        <p class="mt-24" style="color:var(--text-secondary);font-size:0.9rem;">Menunggu pemain lain...</p>
+      </div>
+    </div>
+
+    <!-- SCREEN: Leaderboard -->
+    <div class="screen" id="screen-leaderboard">
+      <div class="text-center mb-24">
+        <h2 style="font-size:1.8rem;">🏆 Papan Peringkat</h2>
+        <p class="mt-8" style="color:var(--text-secondary);" id="lb-progress">Pertanyaan 1 / 15</p>
+      </div>
+      <div class="leaderboard-list" id="leaderboard-list"></div>
+      <p class="text-center mt-24" style="color:var(--text-secondary);font-size:0.9rem;">Menunggu pertanyaan berikutnya...</p>
+    </div>
+
+    <!-- SCREEN: Podium -->
+    <div class="screen" id="screen-podium">
+      <div class="text-center mb-16">
+        <h2 style="font-size:2rem;">🎉 Game Selesai!</h2>
+      </div>
+      <div class="podium-stage" id="podium-stage"></div>
+      <div class="card card-glass text-center mt-24" id="player-final-rank">
+        <p style="font-size:1.1rem;color:var(--text-secondary);">Peringkat kamu</p>
+        <p style="font-size:2.5rem;font-weight:900;color:var(--primary);" id="final-rank">#1</p>
+        <p style="font-size:1.2rem;font-weight:600;" id="final-score">0 poin</p>
+      </div>
+      <button class="btn btn-ghost btn-full mt-24" id="btn-play-again">Main Lagi 🔄</button>
+    </div>
+
+    <!-- SCREEN: Disconnected -->
+    <div class="screen" id="screen-disconnected">
+      <div class="text-center">
+        <div style="font-size:4rem;margin-bottom:16px;">😢</div>
+        <h2>Host Terputus</h2>
+        <p class="mt-16" style="color:var(--text-secondary);">Game telah berakhir karena host meninggalkan sesi.</p>
+        <button class="btn btn-primary btn-full mt-24" id="btn-back-home">Kembali ke Awal</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/shared.js"></script>
+  <script src="/js/player.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ECOFLOW Host — Kelola quiz interaktif tentang pengendalian banjir dan pencemaran limbah">
+  <title>ECOFLOW — Host Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="bg-animated"></div>
+
+  <div class="app-container">
+
+    <!-- SCREEN: Host Home -->
+    <div class="screen host-screen" id="screen-host-home">
+      <div class="logo">
+        <div class="logo-icon">🌊</div>
+        <div class="logo-title">ECOFLOW</div>
+        <div class="logo-subtitle">Host Dashboard</div>
+      </div>
+      <div class="card card-glass text-center" style="max-width:500px;margin:0 auto;">
+        <h2 class="mb-16" style="font-size:1.4rem;">Buat Sesi Quiz Baru</h2>
+        <p style="color:var(--text-secondary);margin-bottom:24px;">Siswa akan bergabung menggunakan kode PIN yang dihasilkan.</p>
+        <button class="btn btn-primary btn-full btn-lg" id="btn-create-game">
+          Buat Game 🎯
+        </button>
+      </div>
+    </div>
+
+    <!-- SCREEN: Host Lobby -->
+    <div class="screen host-screen" id="screen-host-lobby">
+      <div class="text-center">
+        <h2 style="font-size:1.6rem;margin-bottom:8px;">Ruang Tunggu</h2>
+        <p style="color:var(--text-secondary);">Bagikan kode ini ke siswa untuk bergabung</p>
+      </div>
+      <div class="pin-display">
+        <div class="label">Game PIN</div>
+        <div class="pin" id="host-pin">000000</div>
+      </div>
+      <div class="card card-glass">
+        <div class="player-count">
+          <span class="count-icon">👥</span> Pemain bergabung: <span id="host-player-count">0</span>
+        </div>
+        <div class="player-grid" id="host-player-list"></div>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:20px;width:100%;max-width:500px;margin-left:auto;margin-right:auto;">
+        <button class="btn btn-danger" id="btn-cancel-game" style="flex:1;">Batalkan</button>
+        <button class="btn btn-secondary btn-lg" id="btn-start-game" style="flex:2;">Mulai Game 🚀</button>
+      </div>
+    </div>
+
+    <!-- SCREEN: Host Media Fullscreen -->
+    <div class="screen host-screen" id="screen-host-media" style="max-width: 100%; height: 100vh; padding: 0;">
+      <video id="host-fullscreen-video" style="width: 100%; height: 100%; object-fit: contain; background: black;"></video>
+      <button id="btn-skip-video" class="btn btn-secondary" style="position: absolute; bottom: 30px; right: 30px; z-index: 10; border-radius: 30px;">Lewati Video ⏭️</button>
+    </div>
+
+    <!-- SCREEN: Host Question View -->
+    <div class="screen host-screen" id="screen-host-question">
+      <div class="question-header" style="max-width:800px;width:100%;">
+        <span class="question-category" id="host-q-category">Kategori</span>
+        <span class="status-badge live">LIVE</span>
+        <span id="host-q-progress">1 / 15</span>
+      </div>
+      <div class="timer-ring" id="host-timer" style="margin-top:16px;"></div>
+      <div class="card card-glass mb-24" style="max-width:800px;">
+        <p class="question-text host-question-text" id="host-q-text">Loading...</p>
+        <div id="host-q-media" style="text-align: center; margin-bottom: 20px; display: none;"></div>
+      </div>
+      <div class="answers-grid" id="host-answers" style="max-width:800px;"></div>
+      <div class="response-counter" id="host-response-counter" style="max-width:800px;width:100;">
+        Jawaban masuk: <span id="host-answered">0</span> / <span id="host-total-players">0</span>
+      </div>
+    </div>
+
+    <!-- SCREEN: Host Question Results -->
+    <div class="screen host-screen" id="screen-host-results" style="position: relative;">
+      <div class="text-center mb-24 mt-24">
+        <h2 style="font-size:1.6rem;">Hasil Jawaban</h2>
+        <p class="mt-8" style="color:var(--text-secondary);">
+          <span id="host-correct-count">0</span> dari <span id="host-result-total">0</span> menjawab benar ✅
+        </p>
+      </div>
+      <div class="answer-distribution" id="host-distribution" style="max-width:600px;width:100%;"></div>
+      <div class="card card-glass mt-24 text-left" style="max-width:600px; width:100%;">
+        <h3 style="color:var(--primary); margin-bottom:8px; font-size:1.1rem;">Jawaban Benar: <span id="host-correct-text" style="color:var(--text-primary);"></span></h3>
+        <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.5;" id="host-explanation-text"></p>
+      </div>
+      <button class="btn btn-primary btn-lg mt-24" id="btn-show-leaderboard">Lanjut ke Peringkat ➡️</button>
+    </div>
+
+    <!-- SCREEN: Host Leaderboard -->
+    <div class="screen host-screen" id="screen-host-leaderboard">
+      <div class="text-center mb-24">
+        <h2 style="font-size:2rem;">🏆 Papan Peringkat</h2>
+        <p class="mt-8" style="color:var(--text-secondary);" id="host-lb-progress">Pertanyaan 1 / 15</p>
+      </div>
+      <div class="leaderboard-list" id="host-leaderboard-list" style="max-width:600px;width:100%;"></div>
+      <button class="btn btn-primary btn-lg mt-24" id="btn-next-question">Pertanyaan Berikutnya ➡️</button>
+    </div>
+
+    <!-- SCREEN: Host Podium -->
+    <div class="screen host-screen" id="screen-host-podium">
+      <div class="text-center mb-16">
+        <h2 style="font-size:2.5rem;">🎉 Selamat!</h2>
+        <p class="mt-8" style="color:var(--text-secondary);font-size:1.1rem;">Quiz telah selesai. Berikut pemenangnya!</p>
+      </div>
+      <div class="podium-stage" id="host-podium-stage" style="max-width:500px;"></div>
+      <div class="leaderboard-list mt-24" id="host-full-rankings" style="max-width:600px;width:100%;"></div>
+      <button class="btn btn-ghost btn-full mt-24" id="btn-new-game" style="max-width:400px;">Buat Game Baru 🔄</button>
+    </div>
+
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/shared.js"></script>
+  <script src="/js/host.js"></script>
+</body>
+</html>

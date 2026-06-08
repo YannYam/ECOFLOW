@@ -1,0 +1,17 @@
+runtime: nodejs20
+env: standard
+
+# Scaling configuration
+automatic_scaling:
+  min_instances: 0
+  max_instances: 2
+
+# Exclude unnecessary files from upload
+skip_files:
+  - ^node_modules/.*$
+  - ^\.git/.*$
+  - ^\.env$
+  - ^.*\.md$
+
+# Define how to start the app (overrides package.json start script if needed)
+entrypoint: node index.js

@@ -1,0 +1,14 @@
+{
+  "name": "ecoflow-server",
+  "version": "1.0.0",
+  "description": "ECOFLOW — Real-Time Multiplayer Quiz: Flood Control & Waste Pollution",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "socket.io": "^4.7.5"
+  }
+}

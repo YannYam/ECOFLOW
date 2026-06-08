@@ -1,0 +1,286 @@
+[
+  {
+    "id": 1,
+    "category": "flood_control",
+    "question": "Apa penyebab utama banjir di daerah perkotaan?",
+    "mediaUrl": "https://images.unsplash.com/photo-1547683905-f30e618a1cb3?auto=format&fit=crop&w=800&q=80",
+    "mediaType": "image",
+    "options": [
+      "Curah hujan tinggi dan drainase buruk",
+      "Terlalu banyak pohon di kota",
+      "Suhu udara yang sangat dingin",
+      "Angin kencang dari laut"
+    ],
+    "correctAnswer": 0,
+    "timeLimit": 20,
+    "explanation": "Banjir di perkotaan sering disebabkan oleh kombinasi curah hujan tinggi dan sistem drainase yang tidak memadai atau tersumbat."
+  },
+  {
+    "id": 2,
+    "category": "flood_control",
+    "question": "Apa fungsi utama dari biopori dalam pengendalian banjir?",
+    "mediaUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "mediaType": "video",
+    "options": [
+      "Mengalirkan air ke sungai",
+      "Menyerap air hujan ke dalam tanah",
+      "Menampung sampah organik",
+      "Mengurangi polusi udara"
+    ],
+    "correctAnswer": 1,
+    "timeLimit": 20,
+    "explanation": "Biopori berfungsi untuk menyerap air hujan ke dalam tanah, sehingga mengurangi genangan air di permukaan."
+  },
+  {
+    "id": 3,
+    "category": "flood_control",
+    "question": "Manakah yang termasuk upaya pengendalian banjir secara non-struktural?",
+    "options": [
+      "Membangun tanggul sungai",
+      "Membuat waduk penampungan",
+      "Edukasi dan peringatan dini bencana",
+      "Memperlebar saluran drainase"
+    ],
+    "correctAnswer": 2,
+    "timeLimit": 20,
+    "explanation": "Upaya non-struktural meliputi edukasi masyarakat, sistem peringatan dini, dan perencanaan tata ruang."
+  },
+  {
+    "id": 4,
+    "category": "flood_control",
+    "question": "Apa dampak penggundulan hutan terhadap risiko banjir?",
+    "options": [
+      "Mengurangi risiko banjir",
+      "Tidak ada dampak sama sekali",
+      "Meningkatkan risiko banjir karena air tidak terserap tanah",
+      "Membuat air sungai menjadi lebih bersih"
+    ],
+    "correctAnswer": 2,
+    "timeLimit": 20,
+    "explanation": "Penggundulan hutan menghilangkan akar pohon yang berfungsi menyerap air, sehingga air langsung mengalir ke permukaan dan meningkatkan risiko banjir."
+  },
+  {
+    "id": 5,
+    "category": "flood_control",
+    "question": "Apa yang dimaksud dengan DAS (Daerah Aliran Sungai)?",
+    "options": [
+      "Daerah yang selalu tergenang air",
+      "Wilayah daratan tempat air hujan mengalir menuju satu sungai utama",
+      "Area pembuangan limbah industri",
+      "Zona pantai yang terkena pasang surut"
+    ],
+    "correctAnswer": 1,
+    "timeLimit": 25,
+    "explanation": "DAS adalah wilayah daratan yang dibatasi oleh punggung bukit, dimana air hujan yang jatuh akan mengalir menuju satu sungai utama."
+  },
+  {
+    "id": 6,
+    "category": "flood_control",
+    "question": "Mengapa membuang sampah ke sungai bisa menyebabkan banjir?",
+    "options": [
+      "Sampah membuat air sungai menguap lebih cepat",
+      "Sampah menyumbat aliran air sungai",
+      "Sampah menyerap semua air hujan",
+      "Sampah membuat sungai menjadi lebih dalam"
+    ],
+    "correctAnswer": 1,
+    "timeLimit": 20,
+    "explanation": "Sampah yang menumpuk di sungai menyumbat aliran air, sehingga air meluap ke daratan dan menyebabkan banjir."
+  },
+  {
+    "id": 7,
+    "category": "flood_control",
+    "question": "Apa manfaat ruang terbuka hijau (RTH) dalam mengurangi risiko banjir?",
+    "options": [
+      "Menjadi tempat pembuangan sampah",
+      "Menyerap air hujan dan mengurangi limpasan permukaan",
+      "Menambah jumlah bangunan di kota",
+      "Meningkatkan suhu udara di kota"
+    ],
+    "correctAnswer": 1,
+    "timeLimit": 20,
+    "explanation": "Ruang terbuka hijau memiliki tanah dan vegetasi yang mampu menyerap air hujan, sehingga mengurangi limpasan air di permukaan."
+  },
+  {
+    "id": 8,
+    "category": "flood_control",
+    "question": "Apa fungsi embung atau kolam retensi dalam pengendalian banjir?",
+    "options": [
+      "Tempat budidaya ikan",
+      "Menampung sementara air hujan sebelum dialirkan secara bertahap",
+      "Menghasilkan listrik tenaga air",
+      "Tempat penampungan limbah pabrik"
+    ],
+    "correctAnswer": 1,
+    "timeLimit": 20,
+    "explanation": "Embung atau kolam retensi berfungsi menampung air hujan sementara dan melepaskannya secara bertahap ke saluran drainase."
+  },
+  {
+    "id": 9,
+    "category": "flood_control",
+    "question": "Rob atau banjir pasang terjadi karena apa?",
+    "options": [
+      "Hujan lebat yang berkepanjangan",
+      "Air laut pasang yang masuk ke daratan",
+      "Bendungan yang jebol",
+      "Kebocoran pipa air bersih"
+    ],
+    "correctAnswer": 1,
+    "timeLimit": 20,
+    "explanation": "Banjir rob terjadi karena naiknya permukaan air laut (pasang) yang menggenangi daratan di pesisir pantai."
+  },
+  {
+    "id": 10,
+    "category": "flood_control",
+    "question": "Tindakan apa yang paling tepat dilakukan saat terjadi banjir?",
+    "options": [
+      "Tetap bermain di air banjir",
+      "Menyelamatkan barang elektronik terlebih dahulu",
+      "Mengungsi ke tempat yang lebih tinggi dan aman",
+      "Menyalakan semua alat listrik di rumah"
+    ],
+    "correctAnswer": 2,
+    "timeLimit": 20,
+    "explanation": "Saat banjir, prioritas utama adalah keselamatan diri. Segera mengungsi ke tempat yang lebih tinggi dan aman."
+  },
+  {
+    "id": 11,
+    "category": "waste_pollution",
+    "question": "Manakah yang termasuk sampah anorganik?",
+    "options": [
+      "Sisa makanan dan daun kering",
+      "Plastik, kaca, dan kaleng",
+      "Kulit buah dan sayuran",
+      "Kertas tisu dan serbuk kayu"
+    ],
+    "correctAnswer": 1,
+    "timeLimit": 20,
+    "explanation": "Sampah anorganik adalah sampah yang sulit terurai secara alami, seperti plastik, kaca, logam, dan kaleng."
+  },
+  {
+    "id": 12,
+    "category": "waste_pollution",
+    "question": "Apa yang dimaksud dengan prinsip 3R dalam pengelolaan sampah?",
+    "options": [
+      "Read, Relax, Repeat",
+      "Reduce, Reuse, Recycle",
+      "Rest, Run, Return",
+      "Repair, Remove, Replace"
+    ],
+    "correctAnswer": 1,
+    "timeLimit": 20,
+    "explanation": "3R adalah Reduce (mengurangi), Reuse (menggunakan kembali), dan Recycle (mendaur ulang) untuk mengurangi jumlah sampah."
+  },
+  {
+    "id": 13,
+    "category": "waste_pollution",
+    "question": "Berapa lama waktu yang dibutuhkan plastik untuk terurai secara alami?",
+    "options": [
+      "1–5 tahun",
+      "10–20 tahun",
+      "50–100 tahun",
+      "100–500 tahun"
+    ],
+    "correctAnswer": 3,
+    "timeLimit": 20,
+    "explanation": "Plastik membutuhkan waktu 100 hingga 500 tahun untuk terurai secara alami, tergantung jenis plastiknya."
+  },
+  {
+    "id": 14,
+    "category": "waste_pollution",
+    "question": "Apa dampak pencemaran air oleh limbah pabrik terhadap ekosistem sungai?",
+    "options": [
+      "Ikan menjadi lebih besar",
+      "Air sungai menjadi lebih jernih",
+      "Organisme air mati dan ekosistem rusak",
+      "Tanaman air tumbuh lebih subur"
+    ],
+    "correctAnswer": 2,
+    "timeLimit": 20,
+    "explanation": "Limbah pabrik mengandung zat kimia berbahaya yang meracuni organisme air dan merusak keseimbangan ekosistem sungai."
+  },
+  {
+    "id": 15,
+    "category": "waste_pollution",
+    "question": "Apa yang dimaksud dengan sampah B3?",
+    "options": [
+      "Bahan Baku Berkualitas",
+      "Bahan Berbahaya dan Beracun",
+      "Bahan Bekas Bangunan",
+      "Barang Bernilai Berlimpah"
+    ],
+    "correctAnswer": 1,
+    "timeLimit": 20,
+    "explanation": "B3 adalah singkatan dari Bahan Berbahaya dan Beracun, yaitu sampah yang dapat membahayakan kesehatan dan lingkungan."
+  },
+  {
+    "id": 16,
+    "category": "waste_pollution",
+    "question": "Manakah yang merupakan contoh pencemaran tanah?",
+    "options": [
+      "Asap kendaraan bermotor",
+      "Pembuangan pestisida berlebihan ke lahan pertanian",
+      "Suara bising dari pabrik",
+      "Cahaya lampu kota yang terlalu terang"
+    ],
+    "correctAnswer": 1,
+    "timeLimit": 20,
+    "explanation": "Pembuangan pestisida berlebihan mencemari tanah dengan zat kimia berbahaya yang merusak kesuburan tanah."
+  },
+  {
+    "id": 17,
+    "category": "waste_pollution",
+    "question": "Apa dampak mikroplastik terhadap kesehatan manusia?",
+    "options": [
+      "Tidak ada dampak karena ukurannya kecil",
+      "Membuat tubuh lebih kuat dan sehat",
+      "Dapat masuk ke tubuh melalui makanan dan air minum, berpotensi merusak organ",
+      "Hanya berbahaya untuk hewan laut"
+    ],
+    "correctAnswer": 2,
+    "timeLimit": 25,
+    "explanation": "Mikroplastik dapat masuk ke rantai makanan dan dikonsumsi manusia melalui air minum atau makanan laut, berpotensi menyebabkan gangguan kesehatan."
+  },
+  {
+    "id": 18,
+    "category": "waste_pollution",
+    "question": "Apa solusi terbaik untuk mengurangi pencemaran sampah di laut?",
+    "options": [
+      "Membakar semua sampah di pantai",
+      "Mengurangi penggunaan plastik sekali pakai",
+      "Membuang sampah lebih jauh ke tengah laut",
+      "Melarang semua aktivitas di pantai"
+    ],
+    "correctAnswer": 1,
+    "timeLimit": 20,
+    "explanation": "Mengurangi penggunaan plastik sekali pakai adalah langkah paling efektif untuk mengurangi sampah yang berakhir di lautan."
+  },
+  {
+    "id": 19,
+    "category": "waste_pollution",
+    "question": "Apa yang terjadi jika sampah organik dibuang ke sungai dalam jumlah besar?",
+    "options": [
+      "Air sungai menjadi lebih bersih",
+      "Kadar oksigen dalam air turun dan ikan bisa mati",
+      "Ikan akan mendapat lebih banyak makanan",
+      "Sungai menjadi lebih dalam"
+    ],
+    "correctAnswer": 1,
+    "timeLimit": 20,
+    "explanation": "Sampah organik yang membusuk di sungai menghabiskan oksigen terlarut dalam air (proses eutrofikasi), menyebabkan ikan dan organisme lain kekurangan oksigen."
+  },
+  {
+    "id": 20,
+    "category": "waste_pollution",
+    "question": "Apa hubungan antara sampah dan banjir?",
+    "options": [
+      "Tidak ada hubungan sama sekali",
+      "Sampah yang menyumbat saluran air menyebabkan banjir",
+      "Banjir membuat sampah menjadi hilang",
+      "Sampah menyerap air banjir"
+    ],
+    "correctAnswer": 1,
+    "timeLimit": 20,
+    "explanation": "Sampah yang dibuang sembarangan ke saluran air dan sungai menyebabkan penyumbatan aliran air, sehingga air meluap dan menyebabkan banjir."
+  }
+]

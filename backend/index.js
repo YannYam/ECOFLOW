@@ -208,9 +208,12 @@ io.on('connection', (socket) => {
     const currentQ = game.questions[game.currentQuestion];
     const isCorrect = answerIndex === currentQ.correctAnswer;
 
+    const timeElapsed = Date.now() - game.questionStartTime;
+    const exactTimeRemaining = Math.max(0, (currentQ.timeLimit * 1000) - timeElapsed);
+
     let points = 0;
     if (isCorrect) {
-      const speedBonus = Math.round(500 * (timeRemaining / currentQ.timeLimit));
+      const speedBonus = Math.round(500 * (exactTimeRemaining / (currentQ.timeLimit * 1000)));
       points = 1000 + speedBonus;
       player.streak += 1;
     } else {
@@ -235,36 +238,8 @@ io.on('connection', (socket) => {
       explanation: currentQ.explanation
     });
 
-    // Update host with question stats
-    const answeredCount = Array.from(game.players.values()).filter(p => p.hasAnswered).length;
-    const correctCount = Array.from(game.players.values()).filter(p => {
-      const lastAnswer = p.answers[p.answers.length - 1];
-      return lastAnswer && lastAnswer.questionId === currentQ.id && lastAnswer.correct;
-    }).length;
-
-    // Answer distribution
-    const distribution = [0, 0, 0, 0];
-    for (const [, p] of game.players) {
-      const lastAnswer = p.answers[p.answers.length - 1];
-      if (lastAnswer && lastAnswer.questionId === currentQ.id) {
-        distribution[lastAnswer.answerIndex]++;
-      }
-    }
-
-    io.to(game.hostSocketId).emit('game:questionStats', {
-      totalAnswered: answeredCount,
-      totalPlayers: game.players.size,
-      correctCount,
-      distribution
-    });
-
-    // If all players answered, end the question early
-    if (answeredCount === game.players.size) {
-      clearTimerForGame(game);
-      setTimeout(() => {
-        showLeaderboard(game);
-      }, 500);
-    }
+    // Update host with question stats and check for early end
+    updateQuestionStatsAndCheckEarlyEnd(game);
   });
 
   // ── DISCONNECT ───────────────────────────────
@@ -292,6 +267,8 @@ io.on('connection', (socket) => {
           playerCount: game.players.size
         });
         console.log(`[PLAYER LEFT] ${player.nickname} from game ${pin}`);
+        
+        updateQuestionStatsAndCheckEarlyEnd(game);
         return;
       }
     }
@@ -301,6 +278,39 @@ io.on('connection', (socket) => {
 // ──────────────────────────────────────────────
 // Game Logic Functions
 // ──────────────────────────────────────────────
+
+function updateQuestionStatsAndCheckEarlyEnd(game) {
+  if (game.status !== 'playing') return;
+  const currentQ = game.questions[game.currentQuestion];
+
+  const answeredCount = Array.from(game.players.values()).filter(p => p.hasAnswered).length;
+  const correctCount = Array.from(game.players.values()).filter(p => {
+    const lastAnswer = p.answers[p.answers.length - 1];
+    return lastAnswer && lastAnswer.questionId === currentQ.id && lastAnswer.correct;
+  }).length;
+
+  const distribution = [0, 0, 0, 0];
+  for (const [, p] of game.players) {
+    const lastAnswer = p.answers[p.answers.length - 1];
+    if (lastAnswer && lastAnswer.questionId === currentQ.id) {
+      distribution[lastAnswer.answerIndex]++;
+    }
+  }
+
+  io.to(game.hostSocketId).emit('game:questionStats', {
+    totalAnswered: answeredCount,
+    totalPlayers: game.players.size,
+    correctCount,
+    distribution
+  });
+
+  if (answeredCount >= game.players.size && game.players.size > 0) {
+    clearTimerForGame(game);
+    setTimeout(() => {
+      showLeaderboard(game);
+    }, 500);
+  }
+}
 
 function sendNextQuestion(game) {
   game.currentQuestion += 1;

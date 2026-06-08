@@ -1,0 +1,29 @@
+steps:
+  # 1. Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/ecoflow-app', '.']
+
+  # 2. Push the container image to Container Registry (GCR)
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/ecoflow-app']
+
+  # 3. Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'ecoflow-service'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/ecoflow-app'
+      - '--region'
+      - 'asia-southeast2' # Defaulting to Jakarta region, change if needed
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--port'
+      - '3000'
+
+# Store the image in Container Registry
+images:
+  - 'gcr.io/$PROJECT_ID/ecoflow-app'
